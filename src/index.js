@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import './index.css';
+import { injectGlobal } from 'styled-components';
 import App from './features/App';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore } from './store';
@@ -15,3 +15,11 @@ ReactDOM.render(
   document.getElementById('root')
 );
 registerServiceWorker();
+
+injectGlobal`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+`;

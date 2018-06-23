@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import PostList from './PostsList';
-import './Posts.css';
 
 const Posts = ({ posts, isFetching }) =>
-  <section className="posts">
-    <h1 className="posts__title">Posts</h1>
-    <div className="posts__list">
-      <PostList posts={posts} isLoading={isFetching}/>
-    </div>
-  </section>;
+  <Wrapper>
+    <Title>Posts</Title>
+    <PostList posts={posts} isLoading={isFetching}/>
+  </Wrapper>;
 
 Posts.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({})),
@@ -17,3 +15,11 @@ Posts.propTypes = {
 };
 
 export default Posts;
+
+const Wrapper = styled.section`
+  margin: 32px 0;
+`;
+
+const Title = styled.h1`
+  margin-bottom: 24px;
+`;

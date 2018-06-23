@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from 'reactstrap';
+import styled from 'styled-components';
 import { List, LoadingIndicator } from 'components';
 import Post from './Post';
-import './PostsList.css';
 
 const PostsList = ({ posts, isLoading }) =>
   <List
-    loadingIndicator={<LoadingIndicator size={50} className="posts-list__loading-indicator"/>}
+    loadingIndicator={<CustomLoadingIndicator size={50} />}
     emptyListComponent={<Alert color="info">No posts</Alert>}
     items={posts}
     isLoading={isLoading}>
     {({ items }) => {
       return (
-        <div className="posts-list">
+        <div>
           {
             items.map(({ title, body, id }) =>
-              <Post key={id} className="posts-list__post" title={title} body={body}/>
+              <CustomPost key={id} title={title} body={body}/>
             )
           }
         </div>
@@ -30,3 +30,13 @@ PostsList.propTypes = {
 };
 
 export default PostsList;
+
+const CustomLoadingIndicator = styled(LoadingIndicator)`
+  width: 100%;
+  margin: 24px 0;
+  text-align: center;
+`;
+
+const CustomPost = styled(Post)`
+  margin-bottom: 24px;
+`;
