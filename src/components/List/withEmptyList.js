@@ -1,4 +1,3 @@
-import React from 'react';
 import { branch } from 'recompose';
 
 const renderEmptyListComponent = () => ({ emptyListComponent }) => emptyListComponent;
