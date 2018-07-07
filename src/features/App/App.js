@@ -16,7 +16,7 @@ class App extends Component {
             </Col>
           </Row>
         </Container>
-        <GithubCorner href="https://github.com/Starotitorov/react-tutorial-app" />
+        <GithubCorner href="https://github.com/Starotitorov/react-social-app" />
       </main>
     );
   }
