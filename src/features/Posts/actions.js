@@ -1,5 +1,7 @@
 import { createAction } from 'redux-actions';
 import { rest } from 'services';
+import { createPostModel } from './model';
+import { hideAddPostModal } from './AddPostModal/actions';
 
 export const setPosts = createAction('posts/SET_POSTS', posts => ({ posts }));
 
@@ -10,6 +12,18 @@ export const fetchPosts = () => dispatch => {
   dispatch(fetchPostsRequest());
 
   rest.api.fetchPosts()
-    .then((posts) => dispatch(setPosts(posts)))
+    .then(posts => dispatch(setPosts(posts)))
     .catch(() => dispatch(fetchPostsFailure()));
 };
+
+export const addPost = postData => dispatch => {
+  const post = createPostModel(postData);
+
+  return rest.api.addPost(post)
+    .then(() => {
+      dispatch(fetchPosts());
+
+      dispatch(hideAddPostModal());
+    })
+};
+
