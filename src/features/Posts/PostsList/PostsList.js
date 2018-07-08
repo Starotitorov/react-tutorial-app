@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Alert } from 'reactstrap';
 import styled from 'styled-components';
 import { List, LoadingIndicator } from 'components';
-import Post from './Post';
+import Post from './PostView';
 
-const PostsList = ({ posts, isLoading }) =>
+const PostsList = ({ posts, isLoading, deletePost }) =>
   <List
     loadingIndicator={<CustomLoadingIndicator size={50} />}
     emptyListComponent={<Alert color="info">No posts</Alert>}
@@ -16,7 +16,7 @@ const PostsList = ({ posts, isLoading }) =>
         <div>
           {
             items.map(({ title, body, id }) =>
-              <CustomPost key={id} title={title} body={body}/>
+              <CustomPost deletePost={deletePost} key={id} id={id} title={title} body={body}/>
             )
           }
         </div>

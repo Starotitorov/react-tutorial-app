@@ -27,3 +27,7 @@ export const addPost = postData => dispatch => {
     })
 };
 
+export const deletePost = postId => dispatch => rest.api.deletePost(postId)
+  .then(() => {
+    dispatch(fetchPosts());
+  });
