@@ -10,13 +10,14 @@ const PostsList = ({ posts, isLoading, deletePost }) =>
     loadingIndicator={<CustomLoadingIndicator size={50} />}
     emptyListComponent={<Alert color="info">No posts</Alert>}
     items={posts}
+    deletePost={deletePost}
     isLoading={isLoading}>
-    {({ items }) => {
+    {({ items, deletePost }) => {
       return (
         <div>
           {
             items.map(({ title, body, id }) =>
-              <CustomPost deletePost={deletePost} key={id} id={id} title={title} body={body}/>
+              <CustomPost onDelete={deletePost} key={id} id={id} title={title} body={body}/>
             )
           }
         </div>

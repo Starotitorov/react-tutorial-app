@@ -5,7 +5,6 @@ import { injectGlobal } from 'styled-components';
 import App from './features/App';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore } from './store';
-import 'font-awesome/css/font-awesome.min.css';
 
 const store = createStore();
 

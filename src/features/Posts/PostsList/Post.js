@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Card, CardTitle, CardText } from 'reactstrap';
 
-const Post = ({ id, title, body, className, deletePost}) => 
+const Post = ({ id, title, body, className, onDelete}) => 
     <CustomCard body className={className}>
-      <Cross className="fa fa-times" onClick={ deletePost }/>
+      <Cross className="fa fa-times" onClick={ onDelete }/>
       <CardTitle>{ title }</CardTitle>
       <CardText>{ body }</CardText>
     </CustomCard>;
