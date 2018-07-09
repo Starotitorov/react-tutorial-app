@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const List = ({ items, children }) => children({ items });
+const List = ({ items, deletePost, children }) => children({ items, deletePost });
 
 List.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({})),

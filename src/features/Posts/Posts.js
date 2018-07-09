@@ -5,13 +5,13 @@ import { Button } from 'reactstrap';
 import PostList from './PostsList';
 import AddPostModal from './AddPostModal';
 
-const Posts = ({ posts, isFetching, showAddPostModal }) =>
+const Posts = ({ posts, isFetching, showAddPostModal, deletePost }) =>
   <Wrapper>
     <TitleWrapper>
       <h1>Posts</h1>
       <Button color="link" onClick={showAddPostModal} size="lg">Write post</Button>
     </TitleWrapper>
-    <PostList posts={posts} isLoading={isFetching}/>
+    <PostList posts={posts} deletePost={deletePost} isLoading={isFetching}/>
     <AddPostModal />
   </Wrapper>;
 
