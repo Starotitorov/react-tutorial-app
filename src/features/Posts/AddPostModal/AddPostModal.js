@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import PostForm from '../PostForm';
 
-const AddPostModal = ({ show, handleHide, submitPostForm, addPost, isPostButtonDisabled }) =>
+const AddPostModal = ({
+  show,
+  handleHide,
+  submitPostForm,
+  addPost,
+  isPostButtonDisabled,
+  formViewModel
+}) =>
   <Modal isOpen={show} toggle={handleHide}>
     <ModalHeader toggle={handleHide}>New post</ModalHeader>
     <ModalBody>
-      <PostForm onSubmit={addPost} />
+      <PostForm onSubmit={addPost} viewModel={formViewModel} />
     </ModalBody>
     <ModalFooter>
       <Button color="primary" disabled={isPostButtonDisabled} onClick={submitPostForm}>Post</Button>
@@ -22,5 +29,6 @@ AddPostModal.propTypes = {
   handleHide: PropTypes.func,
   submitPostForm: PropTypes.func,
   addPost: PropTypes.func,
-  isPostButtonDisabled: PropTypes.bool
+  isPostButtonDisabled: PropTypes.bool,
+  formViewModel: PropTypes.shape({})
 };

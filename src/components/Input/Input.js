@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Label, Input as ReactstrapInput, FormFeedback } from 'reactstrap';
 
-const Input = ({ label, type, id, touched, error, ...props }) => [
-  label && <Label key="label" for={ id }>{ label }</Label>,
-  <ReactstrapInput
-    {...props}
-    key="input"
-    type={ type }
-    id={ id }
-    invalid={ touched && error }/>,
-  touched && error && <FormFeedback key="error">{ error }</FormFeedback>
-];
+const Input = ({ label, type, id, touched, error, ...props }) =>
+  <Fragment>
+    {
+      label &&
+        <Label for={ id }>{ label }</Label>
+    }
+    <ReactstrapInput
+      {...props}
+      type={ type }
+      id={ id }
+      invalid={ touched && error } />
+    {
+      touched && error &&
+        <FormFeedback>{ error }</FormFeedback>
+    }
+  </Fragment>;
 
 export default Input;
 
