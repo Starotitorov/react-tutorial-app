@@ -7,8 +7,12 @@ export const fetchPosts = () =>
   axios.get(`${API_URL}/posts`)
     .then(response => response.data);
 
+export const addPost = post => axios.post(`${API_URL}/posts`, post)
+  .then(response => response.data);
+
 restService.api = {
-  fetchPosts
+  fetchPosts,
+  addPost
 };
 
 export default restService;
