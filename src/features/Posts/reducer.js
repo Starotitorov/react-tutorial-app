@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { setPosts, fetchPostsFailure, fetchPostsRequest } from './actions';
+import { setPosts, fetchPostsFailure, fetchPosts } from './actions';
 
 const initialState = {
   isFetching: false,
@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const postsReducer = handleActions({
-  [fetchPostsRequest]: state => ({ ...state, isFetching: true }),
+  [fetchPosts]: state => ({ ...state, isFetching: true }),
   [fetchPostsFailure]: state => ({ ...state, isFetching: false }),
   [setPosts]: (state, { payload: { posts }}) => ({
     ...state,

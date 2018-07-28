@@ -1,9 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { createEpicMiddleware } from 'redux-observable';
 import rootReducer from './rootReducer';
+import rootEpic from './rootEpic';
 import thunk from 'redux-thunk';
 
 export default (initialState = {}) => {
-  const middleware = [thunk];
+  const epicMiddleware = createEpicMiddleware();
+  const middleware = [thunk, epicMiddleware];
 
   const composeEnhancers =
     typeof window === 'object' &&
@@ -15,9 +18,13 @@ export default (initialState = {}) => {
     applyMiddleware(...middleware),
   );
 
-  return createStore(
+  const store = createStore(
     rootReducer,
     initialState,
     enhancer
   );
+
+  epicMiddleware.run(rootEpic);
+
+  return store;
 }
