@@ -2,15 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { injectGlobal } from 'styled-components';
-import App from './features/App';
+import Routes from './routes';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore } from './store';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = createStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Routes />
   </Provider>,
   document.getElementById('root')
 );

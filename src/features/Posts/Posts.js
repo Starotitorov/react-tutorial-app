@@ -1,19 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Button } from 'reactstrap';
+import { Button, Container, Row, Col } from 'reactstrap';
 import PostList from './PostsList';
 import AddPostModal from './AddPostModal';
 
 const Posts = ({ posts, isFetching, showAddPostModal }) =>
-  <Wrapper>
-    <TitleWrapper>
-      <h1>Posts</h1>
-      <Button color="link" onClick={showAddPostModal} size="lg">Write post</Button>
-    </TitleWrapper>
-    <PostList posts={posts} isLoading={isFetching}/>
-    <AddPostModal />
-  </Wrapper>;
+  <Container>
+    <Row>
+      <Col sm={{ size: 6, offset: 3 }}>
+        <Wrapper>
+          <TitleWrapper>
+            <h1>Posts</h1>
+            <Button color="link" onClick={showAddPostModal} size="lg">Write post</Button>
+          </TitleWrapper>
+          <PostList posts={posts} isLoading={isFetching}/>
+          <AddPostModal />
+        </Wrapper>
+      </Col>
+    </Row>
+  </Container>;
 
 Posts.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({})),
