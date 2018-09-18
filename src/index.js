@@ -1,27 +1,32 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { injectGlobal } from 'styled-components';
-import Routes from './routes';
-import registerServiceWorker from './registerServiceWorker';
-import { createStore } from './store';
+import { render, hydrate } from 'react-dom';
+import Loadable from 'react-loadable';
+import { Frontload } from 'react-frontload';
+import { ConnectedRouter } from 'connected-react-router';
+import createStore from './store/createStore';
+import App from './features/App';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const store = createStore();
+const { store, history } = createStore();
 
-ReactDOM.render(
+const Application = (
   <Provider store={store}>
-    <Routes />
-  </Provider>,
-  document.getElementById('root')
+    <ConnectedRouter history={history}>
+      <Frontload noServerRender>
+        <App />
+      </Frontload>
+    </ConnectedRouter>
+  </Provider>
 );
-registerServiceWorker();
 
-injectGlobal`
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  }
-`;
+const root = document.querySelector('#root');
+
+if (process.env.NODE_ENV === 'production') {
+  Loadable.preloadReady().then(() => {
+    hydrate(Application, root);
+  });
+} else {
+  render(Application, root);
+}

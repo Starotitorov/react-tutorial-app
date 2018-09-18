@@ -3,7 +3,13 @@ import Posts from './Posts';
 
 const withLifecycle = lifecycle({
   componentDidMount() {
-    this.props.fetchPosts();
+    if (!this.props.posts) {
+      this.props.fetchPosts();
+    }
+  },
+
+  componentWillUnmount() {
+    this.props.resetPosts();
   }
 });
 

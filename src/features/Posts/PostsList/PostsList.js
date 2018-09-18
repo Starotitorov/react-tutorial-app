@@ -12,10 +12,11 @@ const PostsList = ({ posts, isLoading }) =>
     items={posts}
     isLoading={isLoading}>
     {({ items }) => {
+      const itemsList = items || [];
       return (
         <div>
           {
-            items.map(({ title, body, id }) =>
+            itemsList.map(({ title, body, id }) =>
               <CustomPost key={id} title={title} body={body}/>
             )
           }

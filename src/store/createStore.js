@@ -1,23 +1,52 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { createBrowserHistory, createMemoryHistory } from 'history';
 import rootReducer from './rootReducer';
 import thunk from 'redux-thunk';
 
-export default (initialState = {}) => {
-  const middleware = [thunk];
+export const isServer = !(
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+);
 
-  const composeEnhancers =
-    typeof window === 'object' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) :
-      compose;
+export default (url = '/') => {
+  const history = isServer ?
+    createMemoryHistory({
+      initialEntries: [url]
+    }) :
+    createBrowserHistory();
 
-  const enhancer = composeEnhancers(
+  const enhancers = [];
+
+  if (process.env.NODE_ENV === 'development' && !isServer) {
+    const devToolsExtension = window.devToolsExtension;
+
+    if (typeof devToolsExtension === 'function') {
+      enhancers.push(devToolsExtension());
+    }
+  }
+
+  const middleware = [thunk, routerMiddleware(history)];
+  const composedEnhancers = compose(
     applyMiddleware(...middleware),
+    ...enhancers
   );
 
-  return createStore(
-    rootReducer,
+  const initialState = !isServer ? window.__PRELOADED_STATE__ : {};
+
+  if (!isServer) {
+    delete window.__PRELOADED_STATE__;
+  }
+
+  const store = createStore(
+    connectRouter(history)(rootReducer),
     initialState,
-    enhancer
+    composedEnhancers
   );
+
+  return {
+    store,
+    history
+  };
 }

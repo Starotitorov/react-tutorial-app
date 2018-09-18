@@ -1,9 +1,14 @@
 import { handleActions } from 'redux-actions';
-import { setPosts, fetchPostsFailure, fetchPostsRequest } from './actions';
+import {
+  setPosts,
+  fetchPostsFailure,
+  fetchPostsRequest,
+  resetPosts
+} from './actions';
 
 const initialState = {
   isFetching: false,
-  posts: []
+  posts: null
 };
 
 const postsReducer = handleActions({
@@ -13,7 +18,8 @@ const postsReducer = handleActions({
     ...state,
     posts,
     isFetching: false
-  })
+  }),
+  [resetPosts]: () => initialState
 }, initialState);
 
 export default postsReducer;
