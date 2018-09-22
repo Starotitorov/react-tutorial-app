@@ -1,17 +1,18 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Card, CardTitle, CardText } from 'reactstrap';
 
-const Post = ({ title, body, className }) =>
+export type Props = {
+  title: string,
+  body: string,
+  className?: string
+}
+
+const Post = ({ title, body, className }: Props) =>
   <Card body className={className}>
     <CardTitle>{ title }</CardTitle>
     <CardText>{ body }</CardText>
   </Card>;
-
-Post.propTypes = {
-  title: PropTypes.string,
-  body: PropTypes.string,
-  className: PropTypes.string
-};
 
 export default Post;

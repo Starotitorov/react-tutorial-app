@@ -1,3 +1,5 @@
+// @flow
+
 import { createValidator } from 'revalidate';
 
 const required = createValidator(

@@ -1,11 +1,13 @@
+// @flow
+
 export const getPosts = ({
   posts: {
     posts = []
   }
-}) => posts;
+}: Object): Array<Post> => posts;
 
 export const isPostsFetching = ({
   posts: {
     isFetching
   }
-}) => isFetching;
+}: Object): boolean => isFetching;

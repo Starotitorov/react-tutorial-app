@@ -1,25 +1,27 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
 import PostList from './PostsList';
 import AddPostModal from './AddPostModal';
 
-const Posts = ({ posts, isFetching, showAddPostModal }) =>
+type Props = {
+  posts: Array<Post>,
+  isFetching: boolean,
+  showAddPostModal: Function,
+  fetchPosts: Function
+};
+
+const Posts = ({ posts, isFetching, showAddPostModal }: Props) =>
   <Wrapper>
     <TitleWrapper>
       <h1>Posts</h1>
       <Button color="link" onClick={showAddPostModal} size="lg">Write post</Button>
     </TitleWrapper>
     <PostList posts={posts} isLoading={isFetching}/>
-    <AddPostModal />
+    <AddPostModal/>
   </Wrapper>;
-
-Posts.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.shape({})),
-  isFetching: PropTypes.bool,
-  showAddPostModal: PropTypes.func
-};
 
 export default Posts;
 

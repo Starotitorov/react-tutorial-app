@@ -1,15 +1,22 @@
+// @flow
+
 import { handleActions } from 'redux-actions';
 import { setPosts, fetchPostsFailure, fetchPostsRequest } from './actions';
 
-const initialState = {
+type State = {
+  isFetching: boolean,
+  posts: Array<Post>
+};
+
+const initialState: State = {
   isFetching: false,
   posts: []
 };
 
 const postsReducer = handleActions({
-  [fetchPostsRequest]: state => ({ ...state, isFetching: true }),
-  [fetchPostsFailure]: state => ({ ...state, isFetching: false }),
-  [setPosts]: (state, { payload: { posts }}) => ({
+  [fetchPostsRequest]: (state: State) => ({ ...state, isFetching: true }),
+  [fetchPostsFailure]: (state: State) => ({ ...state, isFetching: false }),
+  [setPosts]: (state: State, { payload: { posts }}: Object) => ({
     ...state,
     posts,
     isFetching: false

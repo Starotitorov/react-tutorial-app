@@ -1,21 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+
+import React, { type ComponentType } from 'react';
 import { Alert } from 'reactstrap';
 import styled from 'styled-components';
 import { List, LoadingIndicator } from 'components';
-import Post from './Post';
+import PostItem, { type Props as PostItemProps } from './Post';
 
-const PostsList = ({ posts, isLoading }) =>
+type Props = {
+  posts: Array<Post>,
+  isLoading: boolean
+};
+
+type RenderProps = {
+  items: Array<Post>
+};
+
+const PostsList = ({ posts, isLoading }: Props) =>
   <List
     loadingIndicator={<CustomLoadingIndicator size={50} />}
     emptyListComponent={<Alert color="info">No posts</Alert>}
     items={posts}
     isLoading={isLoading}>
-    {({ items }) => {
+    {({ items }: RenderProps) => {
       return (
         <div>
           {
-            items.map(({ title, body, id }) =>
+            items.map(({ title, body, id }: Post) =>
               <CustomPost key={id} title={title} body={body}/>
             )
           }
@@ -23,11 +33,6 @@ const PostsList = ({ posts, isLoading }) =>
       );
     }}
   </List>;
-
-PostsList.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.shape({})),
-  isLoading: PropTypes.bool
-};
 
 export default PostsList;
 
@@ -37,6 +42,6 @@ const CustomLoadingIndicator = styled(LoadingIndicator)`
   text-align: center;
 `;
 
-const CustomPost = styled(Post)`
+const CustomPost = (styled(PostItem)`
   margin-bottom: 24px;
-`;
+`: ComponentType<PostItemProps>);

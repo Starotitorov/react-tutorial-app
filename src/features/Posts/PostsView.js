@@ -1,3 +1,5 @@
+// @flow
+
 import { lifecycle } from 'recompose';
 import Posts from './Posts';
 
