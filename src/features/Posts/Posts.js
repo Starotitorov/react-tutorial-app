@@ -9,7 +9,7 @@ const Posts = ({ posts, isFetching, showAddPostModal }) =>
   <Wrapper>
     <TitleWrapper>
       <h1>Posts</h1>
-      <Button color="link" onClick={showAddPostModal} size="lg">Write post</Button>
+      <Button color="link" onClick={showAddPostModal} size="lg">Write a post</Button>
     </TitleWrapper>
     <PostList posts={posts} isLoading={isFetching}/>
     <AddPostModal />
