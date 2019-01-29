@@ -17,8 +17,8 @@ const AddPostModal = ({
       <PostForm onSubmit={addPost} viewModel={formViewModel} />
     </ModalBody>
     <ModalFooter>
-      <Button color="primary" disabled={isPostButtonDisabled} onClick={submitPostForm}>Post</Button>
       <Button color="secondary" onClick={handleHide}>Cancel</Button>
+      <Button color="primary" disabled={isPostButtonDisabled} onClick={submitPostForm}>Post</Button>
     </ModalFooter>
   </Modal>;
 
