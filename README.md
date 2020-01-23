@@ -1,7 +1,7 @@
 # Social app
 
 This is an example project that shows useful approaches and techniques to write React+Redux applications.
-The application uses [JSONPlaceholder service](https://jsonplaceholder.typicode.com/) as fake REST API.
+The application uses [JSONPlaceholder service](https://jsonplaceholder.typicode.com/) as a fake REST API.
 
 ![Screenshot](./screenshots/screenshot.png)
 
@@ -13,7 +13,7 @@ Install dependencies:
 npm install
 ```
 
-## Running application
+## Running the application
 
 Run the application:
 
@@ -21,4 +21,4 @@ Run the application:
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the result.
