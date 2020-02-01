@@ -40,7 +40,7 @@
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "1.x",
-    "jquery": "1.9.1",
+    "jquery": "3.4.0",
     "popper.js": "^1.16.0"
   }
 }
