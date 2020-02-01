@@ -25,5 +25,6 @@ export const addPost = postData => dispatch => {
 
       dispatch(hideAddPostModal());
     })
+    .catch(e => console.log(e));
 };
 
