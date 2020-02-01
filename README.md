@@ -10,7 +10,7 @@ The application uses [JSONPlaceholder service](https://jsonplaceholder.typicode.
 Install dependencies:
 
 ```
-npm install
+yarn install
 ```
 
 ## Running the application
@@ -18,7 +18,7 @@ npm install
 Run the application:
 
 ```
-npm start
+yarn start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the result.

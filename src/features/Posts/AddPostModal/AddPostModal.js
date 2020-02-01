@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Spinner } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import PostForm from '../PostForm';
 
 const AddPostModal = ({
@@ -22,9 +22,7 @@ const AddPostModal = ({
       <Button color="secondary" onClick={handleHide}>Cancel</Button>
       <Button color="primary" disabled={isPostButtonDisabled} onClick={submitPostForm}>
         { isPostFormSubmitting &&
-          <SpinnerContainer>
-            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
-          </SpinnerContainer>
+          <Spinner className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
         }
         Post
       </Button>
@@ -42,6 +40,6 @@ AddPostModal.propTypes = {
   formViewModel: PropTypes.shape({})
 };
 
-const SpinnerContainer = styled.span`
-  margin-right: 4px;
+const Spinner = styled.span`
+  margin-right: 0.25rem;
 `;

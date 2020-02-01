@@ -30,6 +30,17 @@
     "eslint": "./node_modules/.bin/eslint --fix ./src"
   },
   "devDependencies": {
-    "eslint": "^5.0.0"
+    "@typescript-eslint/eslint-plugin": "2.x",
+    "@typescript-eslint/parser": "2.x",
+    "babel-eslint": "10.x",
+    "eslint": "6.x",
+    "eslint-config-react-app": "^5.2.0",
+    "eslint-plugin-flowtype": "3.x",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "1.x",
+    "jquery": "1.9.1",
+    "popper.js": "^1.16.0"
   }
 }
