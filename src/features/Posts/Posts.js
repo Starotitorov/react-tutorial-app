@@ -8,8 +8,8 @@ import AddPostModal from './AddPostModal';
 const Posts = ({ posts, isFetching, showAddPostModal }) =>
   <Wrapper>
     <TitleWrapper>
-      <h1>Posts</h1>
-      <Button color="link" onClick={showAddPostModal} size="lg">Write a post</Button>
+      <Title>Posts</Title>
+      <Button color="primary" outline onClick={showAddPostModal}>Write a post</Button>
     </TitleWrapper>
     <PostList posts={posts} isLoading={isFetching}/>
     <AddPostModal />
@@ -30,6 +30,11 @@ const Wrapper = styled.section`
 const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   margin-bottom: 24px;
+`;
+
+const Title = styled.h1`
+  margin-bottom: 0;
+  line-height: 1;
 `;
