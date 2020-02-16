@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <main>
-        <Container>
+        <Container fluid>
           <Row>
             <Col xs="12" sm={{ size: 10, offset: 1 }} md={{ size: 6, offset: 3 }}>
               <Posts />

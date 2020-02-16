@@ -33,10 +33,14 @@ export default PostsList;
 
 const CustomLoadingIndicator = styled(LoadingIndicator)`
   width: 100%;
-  margin: 24px 0;
+  margin: 1.5rem 0;
   text-align: center;
 `;
 
 const CustomPost = styled(Post)`
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+
+  :last-child {
+    margin-bottom: 0;
+  }
 `;
