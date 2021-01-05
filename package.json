@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://starotitorov.github.io/react-social-app/",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.1.1",
     "jquery": "3.4.0",
     "popper.js": "1.16.0",
